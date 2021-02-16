@@ -28,18 +28,16 @@ df <- df %>% select(trust, gender, age, vote)
 class(df$trust) # factor
 class(df$gender) # factor
 
-
-levels(df$gender) # 2 (NA er ikke et nivå)
-summary(df$gender) # Det er 629 kvinner i datasettet.
-
 # 4. Hvor mange nivåer har "trstplt"? Hvor mange har "complete trust" til 
 # politikere? Er noen av nivåene mindre relevante? 
 
-levels(df$trust) # 10, når man ser bort i fra "Refusal", "Don't Know", og
-                 # "No answer". NA er ikke et nivå.
+levels(df$trust) 
+# 10, når man ser bort i fra "Refusal", "Don't Know", og "No answer". NA er 
+# ikke et nivå.
 
-summary(df$trust) # 8 har "complete trust" til politikere. Ingen har verdiene 
-                  # "Refusal", "Don't Know" eller "No answer"
+summary(df$trust) 
+# 8 har "complete trust" til politikere. Ingen har verdiene "Refusal", 
+# "Don't Know" eller "No answer", og disse måler ikke politisk tillit.
 
 # 5. Hvor mange nivåer har "gndr"? Hvor mange kvinner er det i datasettet?
 
