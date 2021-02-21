@@ -25,7 +25,7 @@ setwd("~/Desktop/STV1020")
 
 # Vi skal bruke et datasett fra European Social Survey Round 9 (2018), og dette
 # datasettet inneholder svarene fra norske respondenter. Filen heter 
-# "ESS9NO.dta".
+# "ESS9NO.dta" og ligger i Canvas. 
 
 # Pass på at du har lagret datasettet vi skal bruke i dag i samme mappe som den 
 # du har satt som working directory.
@@ -33,13 +33,9 @@ setwd("~/Desktop/STV1020")
 
 ### 1. Pakker ### 
 
-# R-pakker er utvidelser til programmeringsspråket R. De inneholder kode, 
-# data, og dokumentasjon som gir oss tilgang til funksjoner som løser ulike 
-# problemer og gjør koding enklere.
+# Første gang man skal bruke en pakke må man installere den. 
 
-# Første gang man skal bruke en pakke må man installere den. Husk hermetegn!
-
-install.packages("tidyverse")
+install.packages("tidyverse") # Husk hermetegn!
 
 # Så må vi "hente den fra biblioteket" for å fortelle R at vi ønsker å bruke 
 #pakken, dette må vi gjøre hver gang vi åpner R på nytt og ønsker å bruke 
@@ -50,10 +46,6 @@ library(tidyverse)
 
 ### 2. Laste inn data ### 
 
-# Det finnes ulike typer datasett som man kan laste inn i R og man bruker ulike
-# funksjoner for å laste disse inn i R. Noen av funskjonene krever at vi først 
-# har installert en pakke. 
-
 ## For å laste inn en excel-fil ## 
 
 # install.packages("readxl")
@@ -61,10 +53,6 @@ library(tidyverse)
 # df <- read_excel("file")
 
 ## For å laste inn en CSV (Comma-separated values)-fil ##
-
-# read.csv() er brukt for filer hvor komma er brukt til å separere ting 
-#(f.eks. tall) og read.csv2() er brukt for filer hvor semikolon er brukt til å 
-# separere ting.
 
 # df <- read.csv("file")  
 # df <- read.csv2("file")
@@ -81,30 +69,7 @@ df <- read.dta("ESS9NO.dta")
 
 ### 3. Organisering av arbeidet ### 
 
-# OVERSKRIFTER OG TEKST
-# Hvordan man organiserer et R-script kommer an på hva man selv synes er mest 
-# oversiktlig, men det er viktig at man klarer å holde oversikt over hva man
-# har kodet og forstår hva man har gjort når man kommer tilbake til et 
-# script.
-
-# F.eks. kan det være lurt å lage overskrifter og underoverskrifter til 
-# oppgaver eller elementer av arbeidet, som tydeliggjør hvorfor du har inkludert
-# akkurat denne koden og hva du tenker at den skal gjøre.
-
-# Det kan også være lurt å inkludere #tekst som forklarer hva du gjør 
-# og hvorfor. 
-
-# ORGANISERING AV DATA 
-# Når man bruker større datasett som ESS, så inneholder datasettet ofte mange
-# flere variabler enn de vi ønsker å bruke i våre analyser og variablene har 
-# mavn som kan være vanskelig å huske, f.eks. nwspol.
-
-# Derfor kan det være lurt å fjerne de variablene vi ikke skal bruke og 
-# gi variablene  navn som er lette for oss å forstå og huske.  
-
-# Her endrer vi navnet til variablene til noe mer intuitivt. Vi bruker en pipe 
-# (%>%), som tar outputen til et utsagn og gjør det til inputen til det neste 
-# utsagnet. Pipen kan sees på som ordet "så".
+# Bruker rename() for å endre navnene til variablene våre.
 
 df <- df %>% rename(
     news = nwspol,
@@ -186,14 +151,11 @@ tail(df$interest)
 
 ### 7. Plotting ###
 
-# Det er gøy å kunne visualisere dataene våre, både for vår egen del, men også
-# for de som skal lese oppgavene våre. For å få fine grafer kan man bruke 
-# pakken ggplot.
-
 # Hvordan kan vi visualisere hvordan fordelingen av politisk interesse er?
 # Her kan vi bruke geom_bar for å lage et histogram.
 
 ggplot(data = df, aes(x = interest)) + geom_bar()
+
 
 # Hvor mange innenfor hvert nivå av politisk interesse stemte?
 
@@ -201,6 +163,16 @@ ggplot(data = df, aes(x = interest)) + geom_bar(aes(fill=vote),
                                                 position = "dodge") 
 
 # "dodge" forteller at du vil at "vote"-søylene skal være ved siden av hverandre. 
+
+
+# Hvordan fordeler respondentenes alder og tiden de bruker på nyheter seg?
+
+ggplot(data = df, aes(x = news)) +
+  geom_histogram(bins = 5) # bins sier hvor mange søyler vi skal ha
+
+ggplot(data = df, aes(x = age)) +
+  geom_histogram(binwidth = 10) # bindwidth sier hvor stor hver søyle skal være
+
 
 # Hvordan fordeler tiden man bruker på nyheter på alder?
 # Her kan vi bruke geom_point for å lage et spredningsplott.
@@ -211,11 +183,14 @@ ggplot(data = df, aes(x = age, y = news)) +
 # Alpha gjør punktene gjennomsiktige, så jo mer solid et punkt er, jo flere 
 # enheter er på dette punktet.
 
+
 # Hvordan fordeler alder seg på interesse? Vi kan lage et boksplott med 
 # geom_boxplot.
 
 ggplot(data = df, aes(x = interest, y = age)) +
   geom_boxplot() 
+
+
 
 # Hvis dere vil utforske hvordan man kan tilpasse de ulike diagrammene vi har
 # sett på og mange andre, kan denne siden være nyttig: 
