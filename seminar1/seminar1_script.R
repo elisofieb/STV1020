@@ -19,6 +19,7 @@
 
 ### 2. R, RStudio, og syntax-feil ### 
 
+?mean
 mean(,4+3))
 
 
@@ -35,8 +36,8 @@ mean(,4+3))
 
 to <- 2
 
-# <- er assigneren. Den sier bare at det som kommer på venstresiden skal lagres
-# med navnet som er på høyresiden. Kjører dere koden vil dere se i environnment 
+# <- er assigneren. Den sier bare at det som kommer på høyresiden skal lagres
+# med navnet som er på venstresiden Kjører dere koden vil dere se i environnment 
 # at det kommer en linje hvor det står "to 2", dette betyr at vi har laget en
 # variabel med navnet "to" som inneholder verdien 2. 
 
@@ -49,14 +50,14 @@ to <- 2
 # Det fine med objekter er at de kan inneholde veldig mye informasjon! 
 # I første omgang kan vi prøve å lagre flere tall. Det er flere måter vi kan 
 # gjøre dette på, f.eks. kan vi skrive 1:10 for å få alle heltallene mellom 1 og 
-# 10, eller skrive c(1,22,5,2,1) for å lage en rekke tall. I det siste skiller 
+# 10, eller skrive c(1,22,5,2,1) for å lage en tallrekke. I det siste skiller 
 # jeg tallene med komma. 
 
 tall <- 1:10
 flere_tall <- c(1,4,56,8,4,2,4)
 
 # Du kan gi objektene akkurat de navnene du vil, men man kan ikke ha mellomrom 
-# i navnene eller tall som første tegn, og det er god kutyme å unnåæ/ø/å 
+# i navnene eller tall som første tegn, og det er god kutyme å unngå æ/ø/å 
 # generelt i script.
 
 # Funksjoner # 
@@ -70,7 +71,7 @@ flere_tall <- c(1,4,56,8,4,2,4)
 mean(tall)
 mean(flere_tall)
 
-#La oss si at vi vil ha element nr. 5 i vektoren flere_tall
+# La oss si at vi vil ha element nr. 5 i vektoren flere_tall
 
 tall[5] 
 
@@ -95,7 +96,7 @@ ny_vektor <- flere_tall[c(3,5,1,6)]
 
 # Klasser # 
 
-# For å sjekke om noe er numeric kan vi bruke funksjonen is.numeric():
+# For å sjekke om noe er numeric kan vi bruke is.numeric-funksjonen:
 
 is.numeric(tall)
 
@@ -139,7 +140,6 @@ skolenivaer <- factor(c("Barneskole", "Ungdomskole", "Videregaende",
 
 skolenivaer
 
-
 # Vi kan også lage et objekt som inneholder både tekst og tall:
 
 tekst_tall <- c(1,4,0,4, "matte", "R", "seminarer")
@@ -165,7 +165,7 @@ by <- c("Bergen", "Karasjok", "Arendal", NA, "Trondheim", "Halden", "Fredrikstad
 
 length(navn)
 
-#For å lage en data.frame kan vi bruke funksjonen as.data.frame()
+# For å lage en data.frame kan vi bruke data.frame-funksjonen:
 
 personer <- data.frame(navn, alder, fylke, by)
 
@@ -189,7 +189,7 @@ personer[2,]
 personer$alder # Her får man verdiene til alle aldrene i datarammen. 
 
 # Vi kan bruke matematiske formler her på samme måte som tidligere, f.eks. 
-# for å finne alders gjennomsnittet i datarammen: 
+# for å finne aldersgjennomsnittet i datarammen: 
 
 mean(personer$alder) # Her får vi NA?
 
@@ -204,7 +204,7 @@ mean(personer$alder, na.rm = TRUE) # Her får man svaret 53.7 istedet.
 median(personer$alder, na.rm = TRUE)
 
 # En lettere måte å få ut alle disse deskriptive verdiene er  å bruke 
-# summary()-funksjonen. 
+# summary-funksjonen. 
 # Da trenger vi heller ikke bruke na.rm, fordi den heller sier hvor mange NA 
 # det er i vektoren
 
@@ -212,16 +212,16 @@ summary(personer$alder)
 
 ### 5. Visualisering ### 
 
-# For å installere en pakke bruker vi funksjonen install.packages, og skriver 
+# For å installere en pakke bruker vi install.packages-funksjonen, og skriver 
 # navnet på pakken i parantesene med hermetegn: 
 
 install.packages("tidyverse")
 
-#For å hente inn pakken bruker vi funksjonen library(): 
+# For å hente inn pakken bruker vi library-funksjonen: 
 
 library(tidyverse)
 
-#For å lage en figur starter vi alltid med å definere datasettet, og kan velge
+# For å lage en figur starter vi alltid med å definere datasettet, og kan velge
 # å definere variabler
 
 # Første argument er navnet på datasettet, så skriver man aes() som står for
