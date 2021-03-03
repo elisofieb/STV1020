@@ -193,7 +193,7 @@ personer$alder # Her får man verdiene til alle aldrene i datarammen.
 
 mean(personer$alder) # Her får vi NA?
 
-mean(personer$alder, na.rm = TRUE) # Her får man svaret 52.5 istedet.
+mean(personer$alder, na.rm = TRUE) # Her får man svaret 53.7 istedet.
 
 # na.rm betyr NA remove, og når vi setter den til TRUE ber R om å fjerne NA i 
 # variabelen når den regner ut gjennomsnittet. 
@@ -201,7 +201,7 @@ mean(personer$alder, na.rm = TRUE) # Her får man svaret 52.5 istedet.
 
 # For å finne medianen: 
 
-median(personer$Alder, na.rm = TRUE)
+median(personer$alder, na.rm = TRUE)
 
 # En lettere måte å få ut alle disse deskriptive verdiene er  å bruke 
 # summary()-funksjonen. 
