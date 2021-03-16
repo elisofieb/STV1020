@@ -21,7 +21,7 @@
 # verktøy-linjen - "Set Working Directory" - "Choose Directory" for å velge 
 # en mappe. 
 
-setwd("~/Desktop/STV1020")
+setwd("~/Desktop/STV1020/seminar_2")
 
 # Vi skal bruke et datasett fra European Social Survey Round 9 (2018), og dette
 # datasettet inneholder svarene fra norske respondenter. Filen heter 
@@ -148,6 +148,9 @@ levels(df$interest)
 head(df$interest)
 tail(df$interest)
 
+# Distribusjonen til to variabler #
+
+table(df$vote, df$interest)
 
 ### 7. Plotting ###
 
