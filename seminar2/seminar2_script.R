@@ -155,7 +155,7 @@ table(df$vote, df$interest)
 ### 7. Plotting ###
 
 # Hvordan kan vi visualisere hvordan fordelingen av politisk interesse er?
-# Her kan vi bruke geom_bar for å lage et histogram.
+# Her kan vi bruke geom_bar for å lage et søylediagram.
 
 ggplot(data = df, aes(x = interest)) + geom_bar()
 
